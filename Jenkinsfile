@@ -21,7 +21,7 @@ pipeline {
              withCredentials([usernamePassword(credentialsId: 'jfrog', usernameVariable: 'username', passwordVariable: 'password')]) {
                     sh 'sudo /usr/local/bin/helm repo add hello-helm-local  https://dptdemo.jfrog.io/artifactory/hello-helm-local --username $username --password $password'
                     sh "sudo /usr/local/bin/helm repo update"
-                    sh "sudo /usr/local/bin/helm upgrade ${app}-${env} --install --namespace ${env} -f values.yaml"
+                    sh "sudo /usr/local/bin/helm upgrade ${app}-${env} --install --namespace ${env} -f values.yaml ."
                     sh "sudo /usr/local/bin/helm list -a --namespace ${env}"
                 }
            }
