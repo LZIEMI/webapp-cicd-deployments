@@ -2,8 +2,8 @@ pipeline {
 
   environment {
     app = "webapp"
-    environment = "dev"
-    namespace = "dev"
+    environment = "qa"
+    namespace = "qa"
   }
   agent any
 
@@ -11,7 +11,7 @@ pipeline {
 
       stage ('Checkout SCM'){
         steps {
-          checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://dptrealtime@bitbucket.org/dptrealtime/webapp-cicd-deployments.git']]])
+          checkout([$class: 'GitSCM', branches: [[name: '*/qa']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://dptrealtime@bitbucket.org/dptrealtime/webapp-cicd-deployments.git']]])
         }
       }
 	  
